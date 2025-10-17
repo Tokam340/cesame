@@ -1,0 +1,43 @@
+:root{
+  --bg:#f7fafc; --accent:#0b74de; --muted:#6b7280; --card:#ffffff;
+  --max:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:#0f172a}
+.container{max-width:var(--max);margin:0 auto;padding:1.25rem}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0}
+.logo{font-weight:700;font-size:1.25rem;color:var(--accent);text-decoration:none}
+.nav{display:flex;gap:1rem;align-items:center}
+.nav a{color:var(--muted);text-decoration:none}
+.btn{display:inline-block;padding:.5rem .9rem;border-radius:8px;background:transparent;border:1px solid #e6eef8;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff;border:none}
+.nav-toggle{display:none;background:none;border:0;font-size:1.25rem}
+.hero{padding:3rem 0}
+.hero-inner{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:center}
+.hero h1{font-size:2rem;margin:0 0 .5rem}
+.hero p{margin:0 0 1rem;color:var(--muted)}
+.hero-card .card{padding:1rem;border-radius:12px;background:var(--card);box-shadow:0 8px 20px rgba(11,22,50,0.06)}
+.card{padding:1rem;border-radius:10px;background:var(--card)}
+.full{width:100%}
+.small{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.features{padding:2rem 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.feature{padding:1rem;background:var(--card);border-radius:10px}
+.sims{padding:2rem 0}
+.cards{display:flex;gap:1rem;flex-wrap:wrap}
+.card{flex:1;min-width:220px}
+.pricing{padding:2rem 0}
+.plan{padding:1rem;text-align:center}
+.plan .price{font-weight:700;font-size:1.25rem;margin:1rem 0}
+.featured{box-shadow:0 12px 30px rgba(11,22,50,0.08);transform:translateY(-6px)}
+.contact{padding:2rem 0}
+.contact .card label{display:block;margin-bottom:.75rem}
+.contact input,.contact textarea{width:100%;padding:.6rem;border:1px solid #e6eef8;border-radius:8px}
+.site-footer{padding:1rem 0;background:transparent;border-top:1px solid #edf2f7;margin-top:2rem}
+.foot-links{display:flex;gap:1rem;justify-content:flex-end}
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;padding:0 1rem}
+  .grid{grid-template-columns:1fr}
+  .nav{display:none}
+  .nav-toggle{display:block}
+}
