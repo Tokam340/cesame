@@ -1,0 +1,127 @@
+/* ====== Section Hero ====== */
+.hero {
+  width: 100%;
+  background: linear-gradient(135deg, #f9fafb 0%, #eef3ff 100%);
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 90%;
+  gap: 3rem;
+}
+
+/* ====== Texte ====== */
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 span {
+  color: #2563eb;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.description {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.hero-btn:hover {
+  background-color: #1e4ed8;
+  transform: translateY(-2px);
+}
+
+/* ====== Image ====== */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Animation subtile flottante */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 950px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    padding: 10px 24px;
+  }
+}
+
+

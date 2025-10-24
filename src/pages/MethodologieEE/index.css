@@ -1,0 +1,203 @@
+/* --- Structure globale --- */
+.methodologie-page {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: #f8f9fb;
+}
+
+/* --- Breadcrumb --- */
+.breadcrumb {
+  padding: 1rem 2rem;
+  font-size: 14px;
+  color: #666;
+}
+.breadcrumb ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.breadcrumb li.active {
+  color: #0056d2;
+  font-weight: 600;
+}
+
+/* --- Header Section --- */
+.header-section {
+  background: linear-gradient(135deg, #0a3d62, #1e73be);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.header-content .icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.header-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+.header-content p {
+  color: #d0e1ff;
+  margin-bottom: 30px;
+}
+
+/* --- Stats --- */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.stats div {
+  text-align: center;
+}
+.stats h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+.stats p {
+  font-size: 0.9rem;
+  color: #b9d3ff;
+}
+
+/* --- Tabs --- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  color: #666;
+}
+.tab-button:hover {
+  color: #0056d2;
+}
+.tab-button.active {
+  border-bottom: 3px solid #0056d2;
+  color: #0056d2;
+  font-weight: 600;
+}
+
+/* --- Content --- */
+.content-section {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+.task-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+.task-card:hover {
+  transform: translateY(-3px);
+}
+.task-card h4 {
+  font-size: 1.2rem;
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+/* --- Tips --- */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.tip-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+.tip-card:hover {
+  transform: translateY(-4px);
+}
+.tip-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.tip-icon {
+  font-size: 22px;
+  margin-right: 10px;
+}
+.tip-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tip-card li {
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* --- Call to Action --- */
+.cta-section {
+  text-align: center;
+  background: #0a3d62;
+  color: white;
+  border-radius: 16px;
+  padding: 50px 20px;
+  margin-top: 60px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+}
+.cta-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.cta-section p {
+  color: #cce1ff;
+  margin-bottom: 25px;
+}
+.cta-button {
+  background: white;
+  color: #0a3d62;
+  padding: 12px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.cta-button:hover {
+  background: #d9e9ff;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 1.6rem;
+  }
+  .stats {
+    flex-direction: column;
+  }
+  .tab-button {
+    width: 100%;
+    text-align: center;
+  }
+  .task-card {
+    padding: 20px;
+  }
+}

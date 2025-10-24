@@ -1,0 +1,137 @@
+/* Overlay sombre */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Conteneur principal */
+.modal-container {
+  background: #fff;
+  width: 500px;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideUp 0.3s ease forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+/* En-tête */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a3d62;
+  color: #fff;
+  padding: 15px 20px;
+}
+
+.modal-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-close:hover {
+  color: #f8d7da;
+}
+
+/* Contenu */
+.modal-content {
+  padding: 25px;
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: 2.5rem;
+  color: #0a3d62;
+  margin: 15px 0;
+}
+
+.modal-content h6 {
+  margin: 5px 0;
+  color: #333;
+}
+
+.modal-content p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Footer bouton */
+.start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  background: #0a3d62;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.start-button:hover {
+  background: #1e5fa8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-container {
+    width: 90%;
+  }
+
+  .modal-header h2 {
+    font-size: 1rem;
+  }
+
+  .modal-icon {
+    font-size: 2rem;
+  }
+}

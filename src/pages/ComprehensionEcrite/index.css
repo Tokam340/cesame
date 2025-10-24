@@ -1,0 +1,165 @@
+/* ====== Section Header ====== */
+.blue-header {
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px;
+  box-sizing: border-box;
+  margin-top: 70px;
+}
+
+/* Contenu */
+.header-content {
+  max-width: 900px;
+}
+
+/* Titre principal */
+.header-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Sous-titres */
+.header-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 2.2rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+.series-section {
+  background: #f8fbff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.series-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.series-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.serie-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px 20px;
+  transition: all 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.serie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.serie-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.serie-number {
+  background: #0a3d62;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.lock-style{
+  display: "flex";
+  align-items: "right";
+  gap: "10px";
+  margin-left: 30px;
+}
+
+.serie-header h3 {
+  font-size: 1.2rem;
+  color: #0a3d62;
+}
+
+.serie-description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.serie-button {
+  display: inline-block;
+  background: #0a3d62;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.serie-button:hover {
+  background: #1e5fa8;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .series-title {
+    font-size: 1.8rem;
+  }
+
+  .series-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .serie-card {
+    padding: 20px 15px;
+  }
+
+  .serie-header h3 {
+    font-size: 1.1rem;
+  }
+}
+
+
