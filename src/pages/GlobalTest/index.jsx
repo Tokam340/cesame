@@ -1,22 +1,54 @@
 import React, {useState} from "react";
 import './index.css';
+import Quest from '../../constants/dataCe';
+import Timer from "../../components/Timer";
+
+
+function displayQuestion(quest){
+    let tab = quest.text.split('/')
+    return (
+        <div className="questionText">
+            <div>
+                <span className='t_top'>{tab[0]}</span><br/>
+                <span>{tab[1]}</span><br/>
+                <span className='t_top'>{tab[2]}</span><br/>
+                <span>{tab[3]}</span><br/>
+                <div className='website'>
+                    <span></span>
+                    <span>www.cesame.com</span>
+                </div>
+                
+            </div>
+        </div>
+    )
+}
 
 
 
 export default function GlobalTest(){
 
+  
+
         const totalQuestions = 39;
-        const [currentQuestion, setCurrentQuestion] = useState(1);
+        const [currentQuestion, setCurrentQuestion] = useState(0);
+        const [optionColor, setOptionColor] = useState('');
 
         const handlePrev = () => {
-            if (currentQuestion > 1) setCurrentQuestion(currentQuestion - 1);
+            if (currentQuestion > 0) setCurrentQuestion(currentQuestion - 1);
         };
 
         const handleNext = () => {
             if (currentQuestion < totalQuestions) setCurrentQuestion(currentQuestion + 1);
         };
 
-        
+
+  let questions = Quest[0].quest;
+  const question = questions[currentQuestion];
+
+  const initialMin = 60;
+const initialSec = 0;
+
+
 
     return(
         <>
@@ -27,8 +59,8 @@ export default function GlobalTest(){
           {Array.from({ length: totalQuestions }, (_, i) => (
             <span
               key={i}
-              className={`progress-dot ${currentQuestion === i + 1 ? "active" : ""}`}
-              onClick={() => setCurrentQuestion(i + 1)}
+              className={`progress-dot ${currentQuestion === i ? "active" : ""}`}
+              onClick={() => setCurrentQuestion(i)}
             >
               {i + 1}
             </span>
@@ -39,41 +71,29 @@ export default function GlobalTest(){
         <div className="question-panel">
           <div className="question-header">
             <h6>
-              {currentQuestion} / {totalQuestions}
+              {currentQuestion+1} / {totalQuestions}
             </h6>
-            <h4>Série 2</h4>
-            <h6>3 points</h6>
+            <h4>{Quest[0].title}</h4>
+            <h6>{question.numPoint} points</h6>
           </div>
 
           <div className="question-card">
-            <div className="question-image">
-              <small className="text-danger">
-                Cliquez sur l'image pour l'agrandir !
-              </small>
-              <img
-                src="https://via.placeholder.com/600x300"
-                alt="Question"
-                className="responsive-img"
-              />
-            </div>
 
             <div className="question-text">
-              <p>
-                Vous voulez découvrir d’autres cultures ? Vous voulez parler anglais,
-                français, espagnol ? <br />
-                Leçons à la maison ou au centre Bemardisilmo. <br />
-                Information au 01 03 02 06 65.
-              </p>
+              {displayQuestion(question)}
             </div>
 
             <h5 className="question-title text-center">
-              Qu’est-ce que propose cette publicité ?
+              {question.question}
             </h5>
 
             <div className="answers-list">
-              {["Des cours", "Des emplois", "Des livres", "Des voyages"].map(
+              {question.optionText.map(
                 (choice, index) => (
-                  <div key={index} className="answer-item">
+                  <div key={index}
+                   className={`answer-item ${optionColor === question.options[index] ? 'active': ''}`}
+                   onClick={()=> setOptionColor(question.options[index])}
+                   >
                     <div className="avatar">{String.fromCharCode(65 + index)}</div>
                     <span>{choice}</span>
                   </div>
@@ -95,23 +115,20 @@ export default function GlobalTest(){
             </div>
           </div>
 
-          <div className="stop-link">
+          {/* <div className="stop-link">
             <a href="#!" className="text-danger">
               ⏹ Arrêter la série
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Barre temps restant */}
-        <div className="bottom-bar">
-          <div className="bottom-container">
-            <span className="time-label">Temps restant : 00:57:13</span>
-            <div className="progress-bar">
-              <div className="progress-fill" style={{ width: "95%" }}></div>
-            </div>
-            <span>⏰</span>
-          </div>
-        </div>
+        <Timer
+          key={1}
+          initialMinutes={initialMin}
+          initialSeconds={initialSec}
+          //onComplete={onComplete}
+        />
       </div>
     </section>
 
