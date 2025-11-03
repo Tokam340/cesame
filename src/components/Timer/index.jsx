@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './index.css';
 
-export default function Timer({initialMinutes, initialSeconds}){
+export default function Timer({initialMinutes, initialSeconds, totalTime, onComplete}){
 
     const [minutes, setMinutes] = useState(initialMinutes);
     const [seconds, setSeconds] = useState(initialSeconds);
@@ -10,22 +10,15 @@ export default function Timer({initialMinutes, initialSeconds}){
     useEffect(
             function () {
               let myInterval = setInterval(function () {
-                // if (timeLeft > 0) {
-                //     timeLeft=timeLeft-0.2;
-                //     minutes = Math.floor(timeLeft / 60);
-                //     seconds = Math.round(timeLeft % 60);
-                //     setmin(minutes)
-                //     setsec(seconds)
-                // }
-                // //else {clearInterval(id)}
     
                 if(seconds > 0){
                   setSeconds(seconds - 1);
-                  setTime(time - 0.027);
+                  setTime(time - (100/totalTime));
                 }
                 if(seconds === 0){
                   if(minutes === 0){
                     clearInterval(myInterval);
+                    if(onComplete) onComplete();
                   } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);

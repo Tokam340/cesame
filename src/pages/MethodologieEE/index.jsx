@@ -40,7 +40,7 @@ export default function MethodologiePage() {
               <p>Tâches</p>
             </div>
             <div>
-              <h5>100</h5>
+              <h5>20</h5>
               <p>Points</p>
             </div>
           </div>

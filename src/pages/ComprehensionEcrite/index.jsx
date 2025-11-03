@@ -1,9 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import './index.css';
 import Navbar from '../../components/Navbar'
 
 import { FaLock } from "react-icons/fa";
 import Modal from "../../components/ModalTest";
+
+import quest from '../../constants/dataCe';
+import { useNavigate } from "react-router-dom";
+import {ScoreContext} from '../../constants/Context';
 
 const series = Array.from({ length: 32 }, (_, i) => ({
   id: i + 1,
@@ -14,7 +18,16 @@ const series = Array.from({ length: 32 }, (_, i) => ({
 
 function ComprehensionEcrite (){
     const [open, setOpen] = useState(false);
-    const [serieO, setSerieO] = useState(series);
+    const [serieO, setSerieO] = useState(quest);
+    const { setScore } = useContext(ScoreContext);
+    const navigate = useNavigate();
+
+     const handleClick = (par) => {
+      setScore(par);
+      navigate('/ce/test')
+    };
+
+
     return(
     <>
         <Navbar />
@@ -37,10 +50,10 @@ function ComprehensionEcrite (){
       </p>
 
       <div className="series-grid">
-        {series.map((serie) => (
+        {quest.map((serie) => (
           <div key={serie.id} className="serie-card">
             <div className="serie-header">
-              <div className="serie-number">{serie.id}</div>
+              <div className="serie-number">{serie.id+1}</div>
               <h3>{serie.title}</h3>
               <div className="lock-style">
                 <FaLock style={{ color: "#0a3d62", fontSize: "25px" }} />
@@ -48,14 +61,19 @@ function ComprehensionEcrite (){
             </div>
             <p className="serie-description">{serie.description}</p>
             <a href={serie.link} className="serie-button" onClick={() => {setOpen(true); setSerieO(serie)}}>
-              Premium
+              Commencez
             </a>
           </div>
           
         ))}
       </div>
     </section>
-    <Modal isOpen={open} onClose={() => setOpen(false)} serie={serieO}/>
+
+    <Modal isOpen={open} onClose={() => setOpen(false)}
+      serie={serieO} time={'1h 0min'}
+      navi={()=>handleClick(serieO.id)}
+      instruction={'Lisez attentivement le texte et répondez aux questions suivantes.'}
+    />
 
     </>
     );

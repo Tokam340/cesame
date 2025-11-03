@@ -21,10 +21,10 @@ function Navbar() {
         {/* Liens */}
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
-            <Link to='/ce'><a href="/ce">Compréhension écrite</a></Link>
+            <Link to='/ce'>Compréhension écrite</Link>
           </li>
           <li>
-            <a href="#">Compréhension orale</a>
+            <Link to='/co'>Compréhension orale</Link>
           </li>
 
           {/* Expression écrite avec sous-menu */}
@@ -39,7 +39,7 @@ function Navbar() {
                 dropdown === "ecrite" ? "show" : ""
               }`}
             >
-              <li><Link to='/ee/methodologie'><a href="/ee/methodologie">Méthodologie</a></Link></li>
+              <li><Link to='/ee/methodologie'>Méthodologie</Link></li>
               <li><a href="#">Sujets Récents</a></li>
             </ul>
           </li>

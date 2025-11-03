@@ -1,0 +1,81 @@
+import React, {useState, useContext} from "react";
+import './index.css';
+import Navbar from '../../components/Navbar'
+
+import { FaLock } from "react-icons/fa";
+import Modal from "../../components/ModalTest";
+
+import quest from '../../constants/dataCo';
+import { useNavigate } from "react-router-dom";
+import {ScoreContext} from '../../constants/Context';
+
+const series = Array.from({ length: 32 }, (_, i) => ({
+  id: i + 1,
+  title: `Série ${i + 1}`,
+  description: "Exerce-toi avec les questions de compréhension orale",
+  link: "#", // tu pourras mettre le lien réel vers chaque série ici
+}));
+
+function ComprehensionOrale (){
+    const [open, setOpen] = useState(false);
+    const [serieO, setSerieO] = useState(quest);
+    const { setScore } = useContext(ScoreContext);
+    const navigate = useNavigate();
+
+    const handleClick = (par) => {
+      setScore(par);
+      navigate('/co/test')
+    };
+
+    return(
+    <>
+        <Navbar />
+        
+        <header className="blue-header">
+        <div className="header-content">
+            <h1 className="header-title">Compréhension orale</h1>
+            <p className="header-subtitle">
+            Développez vos compétences en ecoute et analyse d'audio.
+            </p>
+            <p className="header-subtitle">
+            Entraînez-vous avec des exercices et des sujets authentiques du TCF Canada.
+            </p>
+        </div>
+        </header>
+
+        <section className="series-section">
+      <h2 className="series-title">Liste des Séries TCF - Compréhension orale</h2>
+      <p className="series-subtitle">
+        Choisis une série pour t'entraîner et améliorer ton score au TCF.
+      </p>
+
+      <div className="series-grid">
+        {quest.map((serie) => (
+          <div key={serie.id} className="serie-card">
+            <div className="serie-header">
+              <div className="serie-number">{serie.id+1}</div>
+              <h3>{serie.title}</h3>
+              <div className="lock-style">
+                <FaLock style={{ color: "#0a3d62", fontSize: "25px" }} />
+            </div>
+            </div>
+            <p className="serie-description">{serie.description}</p>
+            <a href={serie.link} className="serie-button" onClick={() => {setOpen(true); setSerieO(serie)}}>
+              Commencez
+            </a>
+          </div>
+          
+        ))}
+      </div>
+    </section>
+    <Modal isOpen={open} onClose={() => setOpen(false)} 
+      serie={serieO} time={'35min'}
+      navi={()=>handleClick(serieO.id)}
+      instruction={"Ecoutez attentivement l'audio et répondez aux questions suivantes."}
+    />
+
+    </>
+    );
+}
+
+export default ComprehensionOrale;

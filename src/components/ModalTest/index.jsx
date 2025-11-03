@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import { FaTimes, FaBook, FaPlay } from "react-icons/fa";
 
-const Modal = ({ isOpen, onClose, serie }) => {
+const Modal = ({ isOpen, onClose, serie, time, navi, instruction }) => {
   if (!isOpen) return null;
 
   return (
@@ -19,18 +19,18 @@ const Modal = ({ isOpen, onClose, serie }) => {
         </div>
 
         <div className="modal-content">
-          <h4 className="text-center">Série {serie.id}</h4>
+          <h4 className="text-center">Série {serie.id+1}</h4>
           <FaBook className="modal-icon" />
 
           <h4>39 questions</h4>
-          <h4>Durée : 1h 0min</h4>
+          <h4>Durée : {time}</h4>
 
-          <p>Lisez attentivement le texte et répondez aux questions suivantes.</p>
+          <p>{instruction}</p>
 
           <hr />
 {/* `/ce/test/${serie.id}` */}
-          <div className="modal-footer">
-            <a href={`/ce/test`} className="start-button">
+          <div className="modal-footer" onClick={navi}>
+            <a className="start-button">
               Démarrer <FaPlay />
             </a>
           </div>

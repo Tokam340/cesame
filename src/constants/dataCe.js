@@ -2,6 +2,8 @@ const quest = [
     {
         id: 0,
         title: "Série 1",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -403,6 +405,8 @@ const quest = [
     {
         id: 1,
         title: "Série 2",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -843,6 +847,8 @@ const quest = [
     {
         id: 2,
         title: "Série 3",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -1283,6 +1289,8 @@ const quest = [
     {
         id: 3,
         title: "Série 4",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -1723,6 +1731,8 @@ const quest = [
     {
         id: 4,
         title: "Série 5",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -2163,6 +2173,8 @@ const quest = [
     {
         id: 5,
         title: "Série 6",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -2602,6 +2614,8 @@ const quest = [
     {
         id: 6,
         title: "Série 7",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -3041,6 +3055,8 @@ const quest = [
     {
         id: 7,
         title: "Série 8",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -3480,6 +3496,8 @@ const quest = [
     {
         id: 8,
         title: "Série 9",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
@@ -3919,6 +3937,8 @@ const quest = [
     {
         id: 9,
         title: "Série 10",
+        description: "Exerce-toi avec les questions de compréhension écrite",
+        link: "#", // tu pourras mettre le lien réel vers chaque série ici
         quest: [
             {
                 id: 0,
