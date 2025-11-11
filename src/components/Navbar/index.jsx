@@ -63,10 +63,10 @@ function Navbar() {
 
           {/* Boutons */}
           <li className="btns">
-            <a href="#" className="btn btn-outline">
+            <a href="/register" id='btn-outline'>
               Inscription
             </a>
-            <a href="#" className="btn btn-filled">
+            <a href="/login" id='btn-filled'>
               Connexion
             </a>
           </li>

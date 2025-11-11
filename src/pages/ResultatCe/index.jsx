@@ -1,17 +1,19 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import "./index.css";
 import Navbar from "../../components/Navbar";
-import {ScoreContext} from '../../constants/Context'
-import {submit, tabP, tabO} from '../GlobalTestCe/index';
 import Quest from '../../constants/dataCe';
 import { Link } from "react-router-dom";
 
 let level='NNA';
 let niv = '';
-let count = 0;
 
-let tab1 = tabP();
-let tab2 = tabO();
+let tab2 = JSON.parse(localStorage.getItem("tabPoint"));
+let tab1 = JSON.parse(localStorage.getItem("tabOption"));
+let sum;
+
+let count;
+
+{tab1 == undefined ? sum = 0 : sum = tab2.reduce((ac,cv)=>{return ac+cv;}, 0)}
 
 function displayQuestion(quest){
     let tab = quest.text.split('/')
@@ -34,14 +36,14 @@ function displayQuestion(quest){
 
 function optionColor(quest,ind){
     let color = "";
-    if(tab2[ind] === quest[ind].correctAnswer) color="true";
+    if(tab1[ind] === quest[ind].correctAnswer) color="true";
     else color="false";
     return color;
 }
 
 function circleColor (i){
     let col = "";
-    if(tab1[i]>0) col="";
+    if(tab2[i]>0) col="";
     else col="selec";
     return col;
 }
@@ -54,12 +56,12 @@ function trueOptionColor(i, quest, ind){
 }
 
 function showLevel(){
-    if(submit() >= 600 && submit() <= 699) level='C2';
-    else if(submit() >= 500 && submit() <= 599) level='C1';
-    else if(submit() >= 400 && submit() <= 499) level='B2';
-    else if(submit() >= 300 && submit() <= 399) level='B1';
-    else if(submit() >= 200 && submit() <= 299) level='A2';
-    else if(submit() >= 100 && submit() <= 199) level='A1';
+    if(sum >= 600 && sum <= 699) level='C2';
+    else if(sum >= 500 && sum <= 599) level='C1';
+    else if(sum >= 400 && sum <= 499) level='B2';
+    else if(sum >= 300 && sum <= 399) level='B1';
+    else if(sum >= 200 && sum <= 299) level='A2';
+    else if(sum >= 100 && sum <= 199) level='A1';
     
     return level;
 }
@@ -94,8 +96,10 @@ function showNiveau(){
   }
 }
 
+
 function nberQuest(tab){
   
+count = 0;
 
   tab.map((num, val) => {
     if(num > 0) count=count+1;
@@ -107,14 +111,14 @@ function nberQuest(tab){
 
 export default function ResultatsCe() {
 
-  const { score } = useContext(ScoreContext);
+  const score = parseInt(localStorage.getItem('num'));
   let question = Quest[score].quest;
   const totalQuestions = 39;
   const [visible, setVisible] = useState(false);
 
   showLevel();
   showNiveau();
-  nberQuest(tabP());
+  nberQuest(tab2);
 
   return (
 
@@ -127,7 +131,7 @@ export default function ResultatsCe() {
         <div className="heading-title">
           <span className="tx-primary">Compréhension Écrite</span>
         </div>
-        <div className="heading-description">Série {score}</div>
+        <div className="heading-description">Série {score+1}</div>
       </div>
     </div>
 
@@ -136,7 +140,7 @@ export default function ResultatsCe() {
       <h3 className="title">Résultats</h3>
 
       <div className="mb-2">
-        <h6 className="subtitle">{count/2} sur 39 questions sont correctes.</h6>
+        <h6 className="subtitle-res">{count} sur 39 questions sont correctes.</h6>
       </div>
 
       {/* <div className="mb-3">
@@ -144,8 +148,8 @@ export default function ResultatsCe() {
       </div> */}
 
       <div className="score-alert">
-        Vous avez atteint <span className="highlight">{submit()}</span> sur 699 point(s),
-        ({Math.round(((submit()/699)*100)*100)/100}%)
+        Vous avez atteint <span className="highlight">{sum}</span> sur 699 point(s),
+        ({Math.round(((sum/699)*100)*100)/100}%)
       </div>
 
       <div className="niveau-global">
@@ -176,8 +180,8 @@ export default function ResultatsCe() {
             <i className="fas fa-arrow-up me-1"></i> Revenir aux séries
           </Link>
         </button>
-        <button className="btnce btn-dark" onClick={()=> setVisible(true)}>
-          <i className="fa fa-eye me-1"></i> Voir les réponses
+        <button className="btnce btn-dark" onClick={visible ? ()=> setVisible(false) : ()=> setVisible(true)}>
+          <i className="fa fa-eye me-1"></i> {visible ? "Cacher les reponses" :"Voir les réponses"}
         </button>
       </div>
     </div>
@@ -199,12 +203,11 @@ export default function ResultatsCe() {
         </div>
         {
         question.map((opt, index) => (
-          <>
+        <div key={opt}>
         {/* Contenu question */}
-        <div className="question-panel" 
-          key={index}
-          id={`${question[index].id}`}
-        >
+          <div className="question-panel"
+            id={`${question[index].id}`}
+          >
           <div className="question-header">
             <h6>
               {index+1} / {totalQuestions}
@@ -228,7 +231,7 @@ export default function ResultatsCe() {
                 (choice, ind) => (
                   <div
                     key={ind}
-                    className={`answer-item ${ind===tab2[index] ? optionColor(question,index):""} ${tab2[index]!==question[index].correctAnswer ? trueOptionColor(ind,question,index) : ""}`}
+                    className={`answer-item ${ind===tab1[index] ? optionColor(question,index):""} ${tab1[index]!==question[index].correctAnswer ? trueOptionColor(ind,question,index) : ""}`}
                   >
                     <div className="avatar">{String.fromCharCode(65 + ind)}</div>
                     <span>{choice}</span>
@@ -239,7 +242,7 @@ export default function ResultatsCe() {
 
           </div>
         </div>
-        </>))}
+        </div>))}
       </div>
       
           

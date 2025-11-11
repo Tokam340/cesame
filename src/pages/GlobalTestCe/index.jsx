@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './index.css';
 import Quest from '../../constants/dataCe';
 import Timer from "../../components/Timer";
-import {ScoreContext} from '../../constants/Context'
+//import {ScoreContext} from '../../constants/Context'
 
 
 function displayQuestion(quest){
@@ -41,27 +41,15 @@ function displayColor(ind, quest, set, tab, tabP, i){
     else{
         if(tabP[i] === "") tabP.push(0);
         else tabP[i] = 0
-    }  
-}
+    }
+    localStorage.setItem("tabPoint", JSON.stringify(tabP));
+    localStorage.setItem("tabOption", JSON.stringify(tab));
+  }
 
 
 let tabAnswer = [];
 let tabOption = [];
 let tabPoint = [];
-
-
-export function submit () {
-    const sum = tabPoint.reduce((ac,cv)=>{return ac+cv;}, 0);
-    return sum;
-}
-
-export function tabP(){
-    return tabPoint;
-}
-
-export function tabO(){
-    return tabOption;
-}
 
 
 
@@ -76,13 +64,7 @@ export default function GlobalTestCe(){
 
     const navigate = useNavigate();
 
-    const { score } = useContext(ScoreContext);
-
-    useEffect(
-      function verify (){
-        if(score === null) {navigate('/ce')}
-      }
-    )
+    const score = localStorage.getItem('num');
 
     
     const onComplete = () => {
@@ -125,8 +107,7 @@ export default function GlobalTestCe(){
         };
 
 
-    let questions;
-    {score !== null ? questions=Quest[score].quest : questions=Quest[0].quest};
+    let questions = Quest[score].quest;
     const question = questions[currentQuestion];
 
     const initialMin = 60;
@@ -160,7 +141,7 @@ export default function GlobalTestCe(){
             <h6>
               {currentQuestion+1} / {totalQuestions}
             </h6>
-            <h4>{score !== null ? Quest[score].title : Quest[0].title}</h4>
+            <h4>{Quest[score].title}</h4>
             <h6>{question.numPoint} points</h6>
           </div>
 

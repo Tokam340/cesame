@@ -1,0 +1,212 @@
+/* Conteneur principal */
+.register-container {
+  max-width: 800px;
+  margin: 140px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Titre */
+.heading-section {
+  margin-bottom: 20px;
+}
+.heading-subtitle {
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 16px;
+}
+.heading-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.tx-primary {
+  color: #2563eb;
+}
+
+/* Logo */
+.logo-box img {
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+/* Carte principale */
+.register-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.register-card h3 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+.text-muted {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Carte code d'invitation */
+.invite-card {
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Interrupteur stylé */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #d1d5db;
+  border-radius: 34px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.switch input:checked + .slider {
+  background: #2563eb;
+}
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Formulaire */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.form-group input, .form-group select {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.required {
+  color: #dc2626;
+}
+
+/* Téléphone */
+.phone-input {
+  display: flex;
+}
+.phone-input input:first-child {
+  width: 20%;
+  margin-right: 5px;
+  text-align: center;
+}
+.phone-input input:last-child {
+  width: 80%;
+}
+small {
+  color: #6b7280;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Mot de passe */
+.password-wrapper-register {
+  position: relative;
+}
+
+.password-wrapper-register input{
+    width: 100%;
+}
+.password-wrapper-register i {
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* Bouton principal */
+.btn-ins-primary {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-ins-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Lien de connexion */
+.login-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.login-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  .register-card {
+    padding: 20px;
+  }
+}

@@ -10,6 +10,8 @@ import ResultatsCe from "./pages/ResultatCe";
 import ResultatsCo from "./pages/ResultatCo";
 import {ScoreContext} from './constants/Context';
 import { useState } from "react";
+import Register from "./pages/Inscription";
+import LoginPage from "./pages/Login";
 
 
 
@@ -33,6 +35,10 @@ function RouteApp() {
               <Route path="/co" element={<ComprehensionOrale />} />
               <Route path="/co/test" element={<GlobalTestCo />} />
               <Route path="/co/result" element={<ResultatsCo />} />
+
+
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<LoginPage />} />
 
               <Route path="/ee/methodologie" element={<MethodologiePage />} />
               <Route path="/tarif" element={<TarifsSection />} />

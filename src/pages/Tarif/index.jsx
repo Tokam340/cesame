@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const TarifsSection = () => {
   const packs = [
@@ -89,6 +90,8 @@ const TarifsSection = () => {
         ))}
       </div>
     </section>
+
+    <Footer />
     </>
   );
 };

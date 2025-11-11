@@ -62,26 +62,29 @@
   margin-left: 1rem;
 }
 
-.btn {
+#btn-outline {
   padding: 8px 16px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
-}
-
-.btn-outline {
   border: 2px solid #2563eb;
   color: #2563eb;
 }
 
-.btn-outline:hover {
+#btn-outline:hover {
   background: #2563eb;
   color: #fff;
 }
 
-.btn-filled {
+#btn-filled {
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
   background: #2563eb;
+  border: 1px solid #2563eb;
   color: #fff;
 }
 
@@ -210,7 +213,12 @@
     width: 100%;
   }
 
-  .btn {
+  #btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  #btn-filled {
     width: 100%;
     text-align: center;
   }

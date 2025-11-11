@@ -8,6 +8,7 @@ import Modal from "../../components/ModalTest";
 import quest from '../../constants/dataCo';
 import { useNavigate } from "react-router-dom";
 import {ScoreContext} from '../../constants/Context';
+import Footer from "../../components/Footer";
 
 const series = Array.from({ length: 32 }, (_, i) => ({
   id: i + 1,
@@ -23,7 +24,7 @@ function ComprehensionOrale (){
     const navigate = useNavigate();
 
     const handleClick = (par) => {
-      setScore(par);
+      localStorage.setItem('num', par);
       navigate('/co/test')
     };
 
@@ -35,7 +36,7 @@ function ComprehensionOrale (){
         <div className="header-content">
             <h1 className="header-title">Compréhension orale</h1>
             <p className="header-subtitle">
-            Développez vos compétences en ecoute et analyse d'audio.
+            Développez vos compétences en écoute et analyse d'audio.
             </p>
             <p className="header-subtitle">
             Entraînez-vous avec des exercices et des sujets authentiques du TCF Canada.
@@ -55,9 +56,9 @@ function ComprehensionOrale (){
             <div className="serie-header">
               <div className="serie-number">{serie.id+1}</div>
               <h3>{serie.title}</h3>
-              <div className="lock-style">
+              {/* <div className="lock-style">
                 <FaLock style={{ color: "#0a3d62", fontSize: "25px" }} />
-            </div>
+            </div> */}
             </div>
             <p className="serie-description">{serie.description}</p>
             <a href={serie.link} className="serie-button" onClick={() => {setOpen(true); setSerieO(serie)}}>
@@ -73,6 +74,8 @@ function ComprehensionOrale (){
       navi={()=>handleClick(serieO.id)}
       instruction={"Ecoutez attentivement l'audio et répondez aux questions suivantes."}
     />
+
+    <Footer />
 
     </>
     );
