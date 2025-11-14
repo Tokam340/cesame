@@ -7,8 +7,14 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdown, setDropdown] = useState(null);
 
+  const token = localStorage.getItem("token");
+
   const toggleDropdown = (name) => {
     setDropdown(dropdown === name ? null : name);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");  // enlever le token
   };
 
   return (
@@ -62,14 +68,14 @@ function Navbar() {
           </li>
 
           {/* Boutons */}
-          <li className="btns">
+          {!token ? <li className="btns">
             <a href="/register" id='btn-outline'>
               Inscription
             </a>
             <a href="/login" id='btn-filled'>
               Connexion
             </a>
-          </li>
+          </li> : <a onClick={handleLogout} href="/login" id='btn-outline'>Logout</a>}
         </ul>
 
         {/* Burger */}

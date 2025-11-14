@@ -6,6 +6,13 @@
   text-align: center;
 }
 
+.message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: red;
+  text-align: center;
+}
+
 /* Titre */
 .heading-section {
   margin-bottom: 20px;

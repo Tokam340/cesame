@@ -7,12 +7,7 @@ import { Link } from "react-router-dom";
 let level='NNA';
 let niv = '';
 let count;
-let sum;
 
-let tab2 = JSON.parse(localStorage.getItem("tabPoint"));
-let tab1 = JSON.parse(localStorage.getItem("tabOption"));
-
-{tab1 == undefined ? sum = 0 : sum = tab2.reduce((ac,cv)=>{return ac+cv;}, 0)}
 
 
 
@@ -31,16 +26,16 @@ function displayQuestion(quest, next, aud){
     }
 }
 
-function optionColor(quest,ind){
+function optionColor(quest,ind,tab){
     let color = "";
-    if(tab1[ind] === quest[ind].correctAnswer) color="true";
+    if(tab[ind] === quest[ind].correctAnswer) color="true";
     else color="false";
     return color;
 }
 
-function circleColor (i){
+function circleColor (i, tab){
     let col = "";
-    if(tab2[i]>0) col="";
+    if(tab[i]>0) col="";
     else col="selec";
     return col;
 }
@@ -52,7 +47,7 @@ function trueOptionColor(i, quest, ind){
     return color;
 }
 
-function showLevel(){
+function showLevel(sum){
     if(sum >= 600 && sum <= 699) level='C2';
     else if(sum >= 500 && sum <= 599) level='C1';
     else if(sum >= 400 && sum <= 499) level='B2';
@@ -105,13 +100,20 @@ function nberQuest(tab){
 
 export default function ResultatsCo() {
 
+  let sum;
+
+let tab2 = JSON.parse(localStorage.getItem("tabPoint"));
+let tab1 = JSON.parse(localStorage.getItem("tabOption"));
+
+{tab1 == undefined ? sum = 0 : sum = tab2.reduce((ac,cv)=>{return ac+cv;}, 0)}
+
   const score = parseInt(localStorage.getItem('num'));
   let question = Quest[score].quest;
   const totalQuestions = 39;
   const [visible, setVisible] = useState(false);
 
 
-  showLevel();
+  showLevel(sum);
   showNiveau();
   nberQuest(tab2);
 
@@ -192,7 +194,7 @@ export default function ResultatsCo() {
           {Array.from({ length: totalQuestions }, (_, i) => (
             <span
               key={i}
-              className={`progress-dot-result ${circleColor(i)}`}
+              className={`progress-dot-result ${circleColor(i, tab2)}`}
             >
             <a href={`#${i}`}> {i + 1} </a>
             </span>
@@ -230,7 +232,7 @@ export default function ResultatsCo() {
                 (choice, ind) => (
                   <div
                     key={ind}
-                    className={`answer-item ${ind===tab1[index] ? optionColor(question,index):""} ${tab1[index]!==question[index].correctAnswer ? trueOptionColor(ind,question,index) : ""}`}
+                    className={`answer-item ${ind===tab1[index] ? optionColor(question,index, tab1):""} ${tab1[index]!==question[index].correctAnswer ? trueOptionColor(ind,question,index) : ""}`}
                   >
                     <div className="avatar">{String.fromCharCode(65 + ind)}</div>
                     <span>{choice}</span>

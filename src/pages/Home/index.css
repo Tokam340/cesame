@@ -499,11 +499,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 8px;
+  color: white;
 }
 
 .card-desc {
   font-size: 0.95rem;
   opacity: 0.9;
+  color: white;
 }
 
 /* ---------- COULEURS DYNAMIQUES ---------- */

@@ -23,16 +23,16 @@ function Home(){
 
     const trainings = [
     {
-      title: "Compréhension orale",
-      desc: "Exercices audio interactifs",
-      color: "primary",
-      link: "/co",
-    },
-    {
       title: "Compréhension écrite",
       desc: "Textes variés et questions types",
       color: "success",
       link: "/ce",
+    },
+    {
+      title: "Compréhension orale",
+      desc: "Exercices audio interactifs",
+      color: "primary",
+      link: "/co",
     },
     {
       title: "Expression écrite",

@@ -2,10 +2,61 @@ import React, { useState } from "react";
 import "./index.css";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Logo from '../../assets/Logo.png'
+import Logo from '../../assets/Logo.png';
+import {useNavigate} from 'react-router-dom';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  const expiresAt = Date.now() + 60 * 60 * 24 * 30 * 1000;
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+
+    try {
+      const res = await fetch('https://cesamebackend.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      // alert(data.message);
+      
+      if(data.token){
+        localStorage.setItem("token", data.token);
+        //localStorage.setItem("expiresAt", expiresAt);
+        setMessage("Connexion réussie ✅");
+        alert("Connexion réussie ✅")
+        navigate("/");
+      }
+      else {
+        setMessage(data.message || "Échec de la connexion ❌");
+      }
+    } catch (error) {
+      setMessage("Erreur de connexion au serveur ⚠️");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <>
@@ -38,13 +89,16 @@ const LoginPage = () => {
               Veuillez saisir vos identifiants pour accéder à votre compte.
             </p>
 
-            <form className="login-form">
+            <form className="login-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>
                   Adresse e-mail ou nom d'utilisateur<span>*</span>
                 </label>
                 <input
                   type="email"
+                  name='email'
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Saisissez votre adresse e-mail"
                   required
                 />
@@ -57,6 +111,9 @@ const LoginPage = () => {
                 <div className="password-wrapper">
                   <input
                     type={showPassword ? "text" : "password"}
+                    name='password'
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Saisissez votre mot de passe"
                     id="password"
                     required
@@ -80,9 +137,11 @@ const LoginPage = () => {
                 </a>
               </div>
 
-              <button type="submit" className="btn-con-primary">
-                Se connecter
+              <button type="submit"  disabled={loading} className="btn-con-primary">
+                 {loading ? <div className="loader"></div> : "Se connecter"}
               </button>
+
+               {message && <p className="message">{message}</p>}
 
               <p className="register-text">
                 Vous n'avez pas encore de compte ?{" "}
